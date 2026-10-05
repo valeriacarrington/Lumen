@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>LUMEN — витрина AI-блогеров</title>
+  <meta name="description" content="Четыре AI-блогера со своим характером и темой. Выберите своего и продолжите разговор в Telegram.">
+  <meta name="theme-color" content="#0a0a0d">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- SVG-спрайт -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-tg" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M21.9 4.3 18.6 19.9c-.2 1.1-.9 1.4-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.3-8.4c.4-.4-.1-.6-.6-.2L6 13.4l-5-1.5c-1.1-.3-1.1-1.1.2-1.6L20.5 2.9c.9-.3 1.7.2 1.4 1.4z"/>
+    </symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24">
+      <path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+    </symbol>
+  </svg>
+
+  <header class="header">
+    <a class="logo" href="#top">lumen<span>.ai</span></a>
+    <a class="btn btn--tg btn--sm" data-tg href="#" target="_blank" rel="noopener">
+      <svg width="18" height="18"><use href="#i-tg"/></svg>Telegram
+    </a>
+  </header>
+
+  <main id="top">
+
+    <section class="hero">
+      <div class="hero__glow" aria-hidden="true"></div>
+      <p class="eyebrow reveal">Витрина AI-блогеров</p>
+      <h1 class="reveal">Блогеры, которых нет. Контент, который <em>смотрят</em>.</h1>
+      <p class="hero__lead reveal">Четыре AI-персонажа со своим характером, темой и голосом. Выберите, кого читать, и продолжите разговор в Telegram.</p>
+      <div class="hero__actions reveal">
+        <a class="btn btn--primary" href="#catalog">Выбрать блогера</a>
+        <a class="btn btn--ghost" data-tg href="#" target="_blank" rel="noopener">
+          <svg width="18" height="18"><use href="#i-tg"/></svg>Перейти в Telegram
+        </a>
+      </div>
+      <ul class="facts reveal">
+        <li><b>4</b>персонажа</li>
+        <li><b>24/7</b>на связи</li>
+        <li><b>1 тап</b>до Telegram</li>
+      </ul>
+    </section>
+
+    <section class="catalog" id="catalog">
+      <div class="section-head reveal">
+        <h2>Каталог</h2>
+        <p>Нажмите на карточку: внутри лента и живой диалог</p>
+      </div>
+      <div class="cards" id="cards"></div>
+      <div class="dots" id="dots" aria-hidden="true"></div>
+    </section>
+
+    <section class="steps">
+      <div class="section-head reveal">
+        <h2>Как это работает</h2>
+      </div>
+      <ol class="steps__list">
+        <li class="reveal"><span>01</span><h3>Выберите персонажа</h3><p>У каждого своя тема: технологии, путешествия, мода, восстановление.</p></li>
+        <li class="reveal"><span>02</span><h3>Загляните в профиль</h3><p>Посмотрите свежие посты и задайте пару вопросов прямо на странице.</p></li>
+        <li class="reveal"><span>03</span><h3>Продолжите в Telegram</h3><p>Там полный блог, закрытые материалы и личные ответы.</p></li>
+      </ol>
+    </section>
+
+    <section class="cta reveal">
+      <h2>Все четверо уже в Telegram</h2>
+      <p>Подписка бесплатная. Отписаться можно в один тап.</p>
+      <a class="btn btn--tg btn--lg" data-tg href="#" target="_blank" rel="noopener">
+        <svg width="20" height="20"><use href="#i-tg"/></svg>Перейти в Telegram
+      </a>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <span>© 2026 lumen.ai</span>
+    <span>Все персонажи созданы нейросетью</span>
+  </footer>
+
+  <!-- Профиль блогера -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal__backdrop" data-close></div>
+    <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="m-name">
+      <button class="sheet__close" data-close aria-label="Закрыть">&times;</button>
+
+      <div class="sheet__scroll" id="sheet-scroll">
+        <div class="profile">
+          <div class="profile__ava"><span id="m-initials"></span><img id="m-img" alt=""></div>
+          <div>
+            <h3 id="m-name"></h3>
+            <p class="profile__nick"><span id="m-nick"></span> · <span id="m-tag"></span></p>
+          </div>
+        </div>
+        <p class="profile__bio" id="m-bio"></p>
+        <ul class="stats" id="m-stats"></ul>
+
+        <div class="tabs" role="tablist">
+          <button class="tab is-active" role="tab" data-tab="posts">Публикации</button>
+          <button class="tab" role="tab" data-tab="chat">Диалог</button>
+        </div>
+
+        <div class="pane" id="pane-posts"></div>
+        <div class="pane" id="pane-chat" hidden>
+          <div class="chat" id="chat" aria-live="polite"></div>
+          <div class="replies" id="replies"></div>
+        </div>
+      </div>
+
+      <div class="sheet__cta">
+        <a class="btn btn--tg btn--block" id="m-tg" href="#" target="_blank" rel="noopener">
+          <svg width="18" height="18"><use href="#i-tg"/></svg>Перейти в Telegram
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
